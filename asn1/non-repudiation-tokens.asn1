@@ -1,3 +1,6 @@
+-- This module defines unsigned non-repudiation token payloads. Encoded tokens are intended to be digitally signed and encapsulated
+-- within external signed message containers such as IEEE 1609.2 SignedData or ETSI TS 103 097 signed structures.
+
 NonRepudiationTokens DEFINITIONS AUTOMATIC TAGS ::=
 BEGIN
 
