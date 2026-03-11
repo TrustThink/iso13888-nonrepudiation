@@ -1,0 +1,52 @@
+NonRepudiationTokens DEFINITIONS AUTOMATIC TAGS ::=
+BEGIN
+
+NRPolicyIdentifier ::= UTF8String
+EntityIdentifier   ::= UTF8String
+ContextInfo        ::= OCTET STRING
+NRTime             ::= GeneralizedTime
+
+HashAlgorithm ::= ENUMERATED {
+    sha256 (0),
+    sha384 (1),
+    sha512 (2)
+}
+
+MessageImprint ::= SEQUENCE {
+    hashAlgorithm   HashAlgorithm,
+    hashValue       OCTET STRING (SIZE(1..64))
+}
+
+NRServiceType ::= ENUMERATED {
+    f-origin   (0),
+    f-delivery (1)
+}
+
+NonRepudiationOfOriginToken ::= SEQUENCE {
+    policyId            NRPolicyIdentifier,
+    serviceType         NRServiceType,
+    originatorId        EntityIdentifier,
+    recipientId         EntityIdentifier,
+    tokenGenerationTime NRTime,
+    transmissionTime    NRTime OPTIONAL,
+    subjectImprint      MessageImprint,
+    contextInfo         ContextInfo OPTIONAL
+}
+
+NonRepudiationOfDeliveryToken ::= SEQUENCE {
+    policyId            NRPolicyIdentifier,
+    serviceType         NRServiceType,
+    recipientId         EntityIdentifier,
+    originatorId        EntityIdentifier,
+    tokenGenerationTime NRTime,
+    receiptTime         NRTime OPTIONAL,
+    subjectImprint      MessageImprint,
+    contextInfo         ContextInfo OPTIONAL
+}
+
+NonRepudiationToken ::= CHOICE {
+    nrot    NonRepudiationOfOriginToken,
+    nrdt    NonRepudiationOfDeliveryToken
+}
+
+END
