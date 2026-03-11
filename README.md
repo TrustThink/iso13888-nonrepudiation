@@ -4,15 +4,7 @@ Java library for generating ISO/IEC 13888-3 non-repudiation evidence tokens (NRO
 
 # ISO 13888 Non-Repudiation Library
 
-This library implements ISO/IEC 13888-3 non-repudiation evidence tokens.
-
-Supported tokens:
-
-- Non-Repudiation of Origin Token (NROT)
-- Non-Repudiation of Delivery Token (NRDT)
-
-The library generates unsigned tokens and computes message imprints.
-Digital signatures are applied using external cryptographic libraries.
+The ISO 13888-3 token library generates unsigned Non-Repudiation of Origin Tokens (NROT) and Non-Repudiation of Delivery Tokens (NRDT) as ASN.1-encoded payloads. These payloads are intended to be signed and encapsulated by external processes using IEEE 1609.2 or ETSI TS 103 097 signed data structures. The library does not perform cryptographic signing or signed-message packaging.
 
 ## Features
 
