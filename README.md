@@ -1,6 +1,6 @@
 # iso13888-nonrepudiation
 
-Java library for generating **ISO/IEC 13888-3 non-repudiation evidence tokens**, including:
+Java library for generating ISO/IEC 13888-3 non-repudiation evidence tokens, including:
 
 - Non-Repudiation of Origin Tokens (NROT)
 - Non-Repudiation of Delivery Tokens (NRDT)
@@ -13,7 +13,7 @@ This project intentionally separates token construction from cryptographic signi
 
 # Overview
 
-This library generates **ASN.1-encoded token payloads** that represent non-repudiation evidence according to ISO/IEC 13888-3.
+This library generates ASN.1-encoded token payloads that represent non-repudiation evidence according to ISO/IEC 13888-3.
 
 The generated tokens are intended to be:
 
@@ -21,15 +21,15 @@ The generated tokens are intended to be:
 2. Digitally signed using an external cryptographic library  
 3. Encapsulated within a signed message container such as:
 
-- **IEEE 1609.2 SignedData**
-- **ETSI TS 103 097 SignedData**
+- IEEE 1609.2 SignedData
+- ETSI TS 103 097 SignedData
 
-The library **does not perform cryptographic signing** or message packaging.
+The library does not perform cryptographic signing or message packaging.
 
 ---
 ## Why This Library Exists
 
-ISO/IEC 13888-3 defines mechanisms for generating **non-repudiation evidence tokens**, but there are very few publicly available reference implementations for creating these tokens.
+ISO/IEC 13888-3 defines mechanisms for generating non-repudiation evidence tokens, but there are very few publicly available reference implementations for creating these tokens.
 
 This library was created to provide a simple, open-source implementation that developers can use to:
 
