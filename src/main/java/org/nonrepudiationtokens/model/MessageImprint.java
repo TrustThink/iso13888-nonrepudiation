@@ -23,4 +23,26 @@ public final class MessageImprint {
     public byte[] getHashValue() {
         return Arrays.copyOf(hashValue, hashValue.length);
     }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("MessageImprint{hashAlgorithm=").append(hashAlgorithm);
+        sb.append(", hashValue=");
+        if (hashValue != null) {
+            sb.append(bytesToHex(hashValue));
+        } else {
+            sb.append("null");
+        }
+        sb.append('}');
+        return sb.toString();
+    }
+
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder hex = new StringBuilder(bytes.length * 2);
+        for (byte b : bytes) {
+            hex.append(String.format("%02X", b));
+        }
+        return hex.toString();
+    }
 }

@@ -65,4 +65,26 @@ public final class NonRepudiationOfOriginToken implements NonRepudiationToken {
     public byte[] getContextInfo() {
         return contextInfo == null ? null : Arrays.copyOf(contextInfo, contextInfo.length);
     }
+
+    @Override
+    public String toString() {
+        return "NonRepudiationOfOriginToken{" +
+                "policyId='" + policyId + '\'' +
+                ", originatorId='" + originatorId + '\'' +
+                ", recipientId='" + recipientId + '\'' +
+                ", tokenGenerationTime=" + tokenGenerationTime +
+                ", transmissionTime=" + transmissionTime +
+                ", subjectImprint=" + subjectImprint +
+                ", contextInfo=" + (contextInfo == null ? null : bytesToHex(contextInfo)) +
+                '}';
+    }
+
+    // Reuse the same utility
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder hex = new StringBuilder(bytes.length * 2);
+        for (byte b : bytes) {
+            hex.append(String.format("%02X", b));
+        }
+        return hex.toString();
+    }
 }

@@ -7,27 +7,37 @@ import java.nio.file.Paths;
 import java.io.IOException;
 
 import java.time.Instant;
+import java.util.Arrays;
 
 public class NrdtExample {
 
     public static void main(String[] args) throws IOException{
 
         Path filePath = Paths.get("input/ieee1609dot2-signed-message.bin");
+        Path outputDir = Paths.get("output");
+        Path outputFile = outputDir.resolve("nrdt.bin");
         byte[] referencedSignedObject = Files.readAllBytes(filePath);
 
         MessageImprint imprint = ImprintCalculator.sha256(referencedSignedObject);
 
-        byte[] unsignedNrdt =
-                    new NRDTBuilder()
-                            .policyId("policy-1")
-                            .recipientId("distribution-system-A")
-                            .originatorId("regulation-system-B")
-                            .tokenGenerationTime(Instant.now())
-                            .receiptTime(Instant.now())
-                            .subjectImprint(imprint)
-                            .buildDer();
+        NRDTBuilder token =new NRDTBuilder()
+                .policyId("policy-1")
+                .recipientId("distribution-system-A")
+                .originatorId("regulation-system-B")
+                .tokenGenerationTime(Instant.now())
+                .receiptTime(Instant.now())
+                .subjectImprint(imprint);
 
-        System.out.println("NRDT length: " + unsignedNrdt.length);
+        System.out.println(token.build());
+
+        byte[] unsignedNrdt = token.buildDer();
+
+        System.out.println("Generated NRDT (DER encoded):");
+        System.out.println(Arrays.toString(unsignedNrdt));
+
+        Files.write(outputFile, unsignedNrdt);
+
+        System.out.println("NROT length: " + unsignedNrdt.length);
 
         // // Decoding
         // NonRepudiationToken token = Asn1TokenDecoder.decode(unsignedNrot);

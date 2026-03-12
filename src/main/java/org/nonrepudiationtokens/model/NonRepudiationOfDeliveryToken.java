@@ -65,4 +65,26 @@ public final class NonRepudiationOfDeliveryToken implements NonRepudiationToken 
     public byte[] getContextInfo() {
         return contextInfo == null ? null : Arrays.copyOf(contextInfo, contextInfo.length);
     }
+
+    @Override
+    public String toString() {
+        return "NonRepudiationOfDeliveryToken{" +
+                "policyId='" + policyId + '\'' +
+                ", recipientId='" + recipientId + '\'' +
+                ", originatorId='" + originatorId + '\'' +
+                ", tokenGenerationTime=" + tokenGenerationTime +
+                ", receiptTime=" + receiptTime +
+                ", subjectImprint=" + subjectImprint +
+                ", contextInfo=" + (contextInfo == null ? null : bytesToHex(contextInfo)) +
+                '}';
+    }
+
+    // Utility method to convert byte array to hex
+    private static String bytesToHex(byte[] bytes) {
+        StringBuilder hex = new StringBuilder(bytes.length * 2);
+        for (byte b : bytes) {
+            hex.append(String.format("%02X", b));
+        }
+        return hex.toString();
+    }
 }

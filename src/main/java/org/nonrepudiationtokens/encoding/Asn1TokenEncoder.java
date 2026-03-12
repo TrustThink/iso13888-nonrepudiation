@@ -87,4 +87,5 @@ public final class Asn1TokenEncoder {
             throw new IllegalStateException("Failed to DER-encode token", e);
         }
     }
+
 }
