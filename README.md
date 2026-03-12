@@ -9,7 +9,6 @@ The library constructs unsigned ASN.1 tokens compliant with ISO/IEC 13888-3. The
 
 This project intentionally separates token construction from cryptographic signing, making it easy to integrate with existing security stacks.
 
----
 
 # Overview
 
@@ -26,7 +25,7 @@ The generated tokens are intended to be:
 
 The library does not perform cryptographic signing or message packaging.
 
----
+
 ## Why This Library Exists
 
 ISO/IEC 13888-3 defines mechanisms for generating non-repudiation evidence tokens, but there are very few publicly available reference implementations for creating these tokens.
