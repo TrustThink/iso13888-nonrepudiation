@@ -8,22 +8,39 @@ import java.io.IOException;
 
 import java.time.Instant;
 import java.util.Arrays;
+import java.util.Scanner;
 
-public class NrdtExample {
+public class NrdtGeneration {
 
     public static void main(String[] args) throws IOException{
 
-        Path filePath = Paths.get("input/ieee1609dot2-signed-message.bin");
-        Path outputDir = Paths.get("output");
+        if(args.length == 0) {
+            System.out.println("Usage: make runNRDT <File name>");
+            System.exit(1);
+        }
+
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.print("Enter policyID: ");
+        String policyId = scanner.nextLine();
+
+        System.out.print("Enter originatorID: ");
+        String originatorId = scanner.nextLine();
+
+        System.out.print("Enter recipientID: ");
+        String recipientId = scanner.nextLine();
+
+        Path filePath = Paths.get("input/" + args[0]);
+        Path outputDir = Paths.get("tokens");
         Path outputFile = outputDir.resolve("nrdt.bin");
         byte[] referencedSignedObject = Files.readAllBytes(filePath);
 
         MessageImprint imprint = ImprintCalculator.sha256(referencedSignedObject);
 
         NRDTBuilder token =new NRDTBuilder()
-                .policyId("policy-1")
-                .recipientId("distribution-system-A")
-                .originatorId("regulation-system-B")
+                .policyId(policyId)
+                .recipientId(recipientId)
+                .originatorId(originatorId)
                 .tokenGenerationTime(Instant.now())
                 .receiptTime(Instant.now())
                 .subjectImprint(imprint);
@@ -38,12 +55,5 @@ public class NrdtExample {
         Files.write(outputFile, unsignedNrdt);
 
         System.out.println("NROT length: " + unsignedNrdt.length);
-
-        // // Decoding
-        // NonRepudiationToken token = Asn1TokenDecoder.decode(unsignedNrot);
-
-        // System.out.println("Policy: " + token.getPolicyId());
-        // System.out.println("Originator: " + token.getOriginatorId());
-        // System.out.println("Recipient: " + token.getRecipientId());
     }
 }

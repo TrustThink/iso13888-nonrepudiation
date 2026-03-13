@@ -58,13 +58,56 @@ This makes the library useful for:
 src/main/java/     Library source code
 examples/          Example token generation programs
 lib/               External dependencies
+input/             Input files for generating tokens
 Makefile           Build configuration
 
 
 
 ## Building the Library 
 
-- LUIS PLEASE UPDATE HERE
+Requirements:
+
+- Java JDK (11 or newer recommended)
+- `make`
+
+Build the library: 
+
+-       make build
+
+Compile example programs: 
+
+- ​      make nrotToken
+- ​      make nrdtToken
+
+Run token generation:
+
+- ​       make runNROT <File name>
+- ​       make runNRDT <File name>
+
+Clean build artifacts:
+
+- ​      make clean
+
+
+## Usage
+* To produce tokens for a given file, first place the file inside the `input` folder.  
+  For example, to generate a token for `example.bin`, place it in `/input`. Then to produce a NROT token, run:
+
+  ```bash
+  make runNROT example.bin
+  ```
+* To produce a NRDT token, run:
+
+  ```bash
+  make runNROT example.bin
+  ```
+
+* When generating tokens you will be prompted to enter the following information:
+    - policyID
+    - originatorID
+    - recipientID
+
+* The token output is written to `/tokens` as nrot.bin for NROT tokens, or nrdt.bin for NRDT tokens.
 
 ## Dependencies
 

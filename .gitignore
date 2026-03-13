@@ -1,0 +1,15 @@
+# Ignore compiled class files and output directories
+/out/
+/*.class
+/examples/*.class
+
+# Ignore tokens produced from main.
+/tokens/*
+
+# Ignore input files.
+/input/*
+
+# Ignore logs and temporary files
+*.log
+*.tmp
+*.bak
