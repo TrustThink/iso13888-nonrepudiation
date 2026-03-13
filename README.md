@@ -64,26 +64,7 @@ Makefile           Build configuration
 
 ## Building the Library 
 
-Requirements:
-
-- Java JDK (11 or newer recommended)
-- `make`
-
-Build the library: make build
-
-Compile example programs: 
-
-- ​      make nrotToken
-- ​      make nrdtToken
-
-Run examples:
-
-- ​       make runNROT
-- ​       make runNRDT
-
-Clean build artifacts:
-
-- ​      make clean
+- LUIS PLEASE UPDATE HERE
 
 ## Dependencies
 
@@ -97,8 +78,8 @@ The Bouncy Castle provider JAR is included in the repository for convenience.
 
 This library was developed by:
 
-Luis Arroyo ()
-Brian Russell
+Luis Arroyo (arroyo_luis@trustthink.net)
+Brian Russell (russell_brian@trustthink.net)
 
 TrustThink, LLC
 
@@ -114,4 +95,14 @@ If you would like to contribute improvements, bug fixes, or additional token exa
 2. Create a feature branch
 3. Submit a pull request
 
-Issues and discussion are encouraged. 
+Issues and discussion are encouraged through the project issue tracker.
+
+## License
+
+This project is released under the MIT License. See LICENSE for details. 
+
+## Disclaimer
+
+This library is provided as a reference implementation and development tool for generating ISO/IEC 13888-3 evidence tokens.
+
+Users are responsible for ensuring that any production deployment integrates appropriate cryptographic signing, secure key management, and operational security controls.
