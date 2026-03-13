@@ -69,7 +69,9 @@ Requirements:
 - Java JDK (11 or newer recommended)
 - `make`
 
-Build the library: make build
+Build the library: 
+
+-       make build
 
 Compile example programs: 
 
